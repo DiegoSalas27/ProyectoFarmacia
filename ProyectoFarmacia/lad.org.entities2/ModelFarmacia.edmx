@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbFarmaciaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Codigo_Categoria" />
+          </Key>
+          <Property Name="Codigo_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ingreso">
+          <Key>
+            <PropertyRef Name="Codigo_Ingreso" />
+          </Key>
+          <Property Name="Codigo_Ingreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Producto" Type="int" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
+          <Property Name="Tipo_Comprobante" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="FechaVen" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Laboratorio">
+          <Key>
+            <PropertyRef Name="Codigo_Laboratorio" />
+          </Key>
+          <Property Name="Codigo_Laboratorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Codigo_Marca" />
+          </Key>
+          <Property Name="Codigo_Marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreMarca" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="Codigo_Presentacion" />
+          </Key>
+          <Property Name="Codigo_Presentacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePresentacion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Codigo_Producto" />
+          </Key>
+          <Property Name="Codigo_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Composicion" Type="text" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Cantidad_Por_Unidad(gr)" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="int" Nullable="false" />
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Presentacion" Type="int" Nullable="false" />
+          <Property Name="Laboratorio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo_usuario" />
+          </Key>
+          <Property Name="codigo_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="roll" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="Codigo_Categoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratorio">
+          <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratorio">
+              <PropertyRef Name="Codigo_Laboratorio" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Codigo_Marca" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentacion">
+          <End Role="Presentacion" Type="Self.Presentacion" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="Codigo_Presentacion" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Presentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Ingreso" Type="Self.Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo_Producto" />
+            </Principal>
+            <Dependent Role="Ingreso">
+              <PropertyRef Name="Codigo_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFarmaciaModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingreso" EntityType="Self.Ingreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laboratorio" EntityType="Self.Laboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presentacion" EntityType="Self.Presentacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Categoria" Association="Self.FK_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratorio" Association="Self.FK_Laboratorio">
+            <End Role="Laboratorio" EntitySet="Laboratorio" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca" Association="Self.FK_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentacion" Association="Self.FK_Presentacion">
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO" Association="Self.FK_PRODUCTO">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Ingreso" EntitySet="Ingreso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFarmaciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Codigo_Categoria" />
+          </Key>
+          <Property Name="Codigo_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productoes" Relationship="Self.FK_Categoria" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Ingreso">
+          <Key>
+            <PropertyRef Name="Codigo_Ingreso" />
+          </Key>
+          <Property Name="Codigo_Ingreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tipo_Comprobante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="FechaVen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_PRODUCTO" FromRole="Ingreso" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Laboratorio">
+          <Key>
+            <PropertyRef Name="Codigo_Laboratorio" />
+          </Key>
+          <Property Name="Codigo_Laboratorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Productoes" Relationship="Self.FK_Laboratorio" FromRole="Laboratorio" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Codigo_Marca" />
+          </Key>
+          <Property Name="Codigo_Marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productoes" Relationship="Self.FK_Marca" FromRole="Marca" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="Codigo_Presentacion" />
+          </Key>
+          <Property Name="Codigo_Presentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePresentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productoes" Relationship="Self.FK_Presentacion" FromRole="Presentacion" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Codigo_Producto" />
+          </Key>
+          <Property Name="Codigo_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Composicion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_Por_Unidad_gr_" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="Int32" Nullable="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Presentacion" Type="Int32" Nullable="false" />
+          <Property Name="Laboratorio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria1" Relationship="Self.FK_Categoria" FromRole="Producto" ToRole="Categoria" />
+          <NavigationProperty Name="Ingresoes" Relationship="Self.FK_PRODUCTO" FromRole="Producto" ToRole="Ingreso" />
+          <NavigationProperty Name="Laboratorio1" Relationship="Self.FK_Laboratorio" FromRole="Producto" ToRole="Laboratorio" />
+          <NavigationProperty Name="Marca1" Relationship="Self.FK_Marca" FromRole="Producto" ToRole="Marca" />
+          <NavigationProperty Name="Presentacion1" Relationship="Self.FK_Presentacion" FromRole="Producto" ToRole="Presentacion" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo_usuario" />
+          </Key>
+          <Property Name="codigo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roll" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="Codigo_Categoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Ingreso" Type="Self.Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo_Producto" />
+            </Principal>
+            <Dependent Role="Ingreso">
+              <PropertyRef Name="Codigo_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratorio">
+          <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratorio">
+              <PropertyRef Name="Codigo_Laboratorio" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Codigo_Marca" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentacion">
+          <End Role="Presentacion" Type="Self.Presentacion" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="Codigo_Presentacion" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="Presentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFarmaciaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Ingresoes" EntityType="Self.Ingreso" />
+          <EntitySet Name="Laboratorios" EntityType="Self.Laboratorio" />
+          <EntitySet Name="Marcas" EntityType="Self.Marca" />
+          <EntitySet Name="Presentacions" EntityType="Self.Presentacion" />
+          <EntitySet Name="Productoes" EntityType="Self.Producto" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_Categoria" Association="Self.FK_Categoria">
+            <End Role="Categoria" EntitySet="Categorias" />
+            <End Role="Producto" EntitySet="Productoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO" Association="Self.FK_PRODUCTO">
+            <End Role="Producto" EntitySet="Productoes" />
+            <End Role="Ingreso" EntitySet="Ingresoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratorio" Association="Self.FK_Laboratorio">
+            <End Role="Laboratorio" EntitySet="Laboratorios" />
+            <End Role="Producto" EntitySet="Productoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca" Association="Self.FK_Marca">
+            <End Role="Marca" EntitySet="Marcas" />
+            <End Role="Producto" EntitySet="Productoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentacion" Association="Self.FK_Presentacion">
+            <End Role="Presentacion" EntitySet="Presentacions" />
+            <End Role="Producto" EntitySet="Productoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFarmaciaModelStoreContainer" CdmEntityContainer="dbFarmaciaEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="Codigo_Categoria" ColumnName="Codigo_Categoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingresoes">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Ingreso">
+              <MappingFragment StoreEntitySet="Ingreso">
+                <ScalarProperty Name="Codigo_Ingreso" ColumnName="Codigo_Ingreso" />
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Tipo_Comprobante" ColumnName="Tipo_Comprobante" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="FechaVen" ColumnName="FechaVen" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laboratorios">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Laboratorio">
+              <MappingFragment StoreEntitySet="Laboratorio">
+                <ScalarProperty Name="Codigo_Laboratorio" ColumnName="Codigo_Laboratorio" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Codigo_Marca" ColumnName="Codigo_Marca" />
+                <ScalarProperty Name="NombreMarca" ColumnName="NombreMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presentacions">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Presentacion">
+              <MappingFragment StoreEntitySet="Presentacion">
+                <ScalarProperty Name="Codigo_Presentacion" ColumnName="Codigo_Presentacion" />
+                <ScalarProperty Name="NombrePresentacion" ColumnName="NombrePresentacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productoes">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="NombreProd" ColumnName="NombreProd" />
+                <ScalarProperty Name="Composicion" ColumnName="Composicion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Cantidad_Por_Unidad_gr_" ColumnName="Cantidad_Por_Unidad(gr)" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="dbFarmaciaModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="codigo_usuario" ColumnName="codigo_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="roll" ColumnName="roll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

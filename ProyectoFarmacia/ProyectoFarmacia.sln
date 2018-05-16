@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain Layer", "Domain Layer", "{ED7D9B6F-DA60-4D21-B7C5-07FAA7C5690C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service Layer", "Service Layer", "{3068C17D-D086-4AE2-833F-9AA096D0893F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{19E8118D-102C-4674-A11F-5410C142BF2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lad.org.repository", "lad.org.repository\lad.org.repository.csproj", "{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lad.org.presentation", "lad.org.presentation\lad.org.presentation.csproj", "{3750160F-9B12-4D2B-B903-D83D69844799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lad.org.business", "lad.org.business\lad.org.business.csproj", "{EAFCA498-8271-4480-B78A-F2718ECCD563}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Layer", "Repository Layer", "{874EFB91-C9C4-456A-BD02-D144210B27CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lad.org.entities2", "lad.org.entities2\lad.org.entities2.csproj", "{4F34E754-578B-4601-B114-E84D728F5869}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3750160F-9B12-4D2B-B903-D83D69844799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3750160F-9B12-4D2B-B903-D83D69844799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3750160F-9B12-4D2B-B903-D83D69844799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3750160F-9B12-4D2B-B903-D83D69844799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFCA498-8271-4480-B78A-F2718ECCD563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFCA498-8271-4480-B78A-F2718ECCD563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFCA498-8271-4480-B78A-F2718ECCD563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFCA498-8271-4480-B78A-F2718ECCD563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F34E754-578B-4601-B114-E84D728F5869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F34E754-578B-4601-B114-E84D728F5869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F34E754-578B-4601-B114-E84D728F5869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F34E754-578B-4601-B114-E84D728F5869}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD5EDA7C-324A-41A1-8F19-BFDFF3728A8D} = {874EFB91-C9C4-456A-BD02-D144210B27CD}
+		{3750160F-9B12-4D2B-B903-D83D69844799} = {19E8118D-102C-4674-A11F-5410C142BF2B}
+		{EAFCA498-8271-4480-B78A-F2718ECCD563} = {3068C17D-D086-4AE2-833F-9AA096D0893F}
+		{4F34E754-578B-4601-B114-E84D728F5869} = {ED7D9B6F-DA60-4D21-B7C5-07FAA7C5690C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AB6047C-6326-4961-9AEB-08D975869322}
+	EndGlobalSection
+EndGlobal

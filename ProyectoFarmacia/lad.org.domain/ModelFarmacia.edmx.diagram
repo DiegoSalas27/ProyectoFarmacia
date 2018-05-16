@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40c4784b92434da3b8e6b102cc3150f7" Name="Diagram1">
+        <EntityTypeShape EntityType="dbFarmaciaModel.Categoria" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFarmaciaModel.Ingreso" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFarmaciaModel.Laboratorio" Width="1.5" PointX="6.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFarmaciaModel.Marca" Width="1.5" PointX="0.625" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFarmaciaModel.Presentacion" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFarmaciaModel.Producto" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="dbFarmaciaModel.FK_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFarmaciaModel.FK_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFarmaciaModel.FK_Laboratorio" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFarmaciaModel.FK_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFarmaciaModel.FK_Presentacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
